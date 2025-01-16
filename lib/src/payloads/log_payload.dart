@@ -6,7 +6,7 @@ import 'package:ray_dart/src/support/types.dart';
 final class LogPayload extends Payload {
   late List<dynamic> values;
 
-  LogPayload(dynamic values, {dynamic rawValues = const []}) {
+  LogPayload(dynamic values, [dynamic rawValues = const []]) {
     if (values! is List) {
       if (values is int && values >= 11111111111111111) {
         this.values = [values.toString()];
