@@ -26,6 +26,7 @@ import 'package:ray_dart/src/payloads/size_payload.dart';
 import 'package:ray_dart/src/payloads/table_payload.dart';
 import 'package:ray_dart/src/payloads/text_payload.dart';
 import 'package:ray_dart/src/ray.dart';
+import 'package:ray_dart/src/support/types.dart';
 
 extension Color on Ray {
   void color(String color) {
@@ -183,17 +184,19 @@ extension Text on Ray {
 }
 
 extension OnlyIf on Ray {
-  void onlyIf(dynamic boolOrCallable, [Function? callback]) {
-    if (boolOrCallable is Function) {
-      boolOrCallable = bool.tryParse(boolOrCallable());
+  void onlyIf<T>(T boolOrCallable, [Function? callback]) {
+    bool result = true;
+
+    if (boolOrCallable is BoolCallable) {
+      result = boolOrCallable();
     }
 
-    if (boolOrCallable && callback != null) {
+    if (boolOrCallable is bool && boolOrCallable && callback != null) {
       callback(this);
     }
 
     if (callback == null) {
-      canSendPayload = boolOrCallable;
+      canSendPayload = result;
     }
   }
 }
