@@ -1,6 +1,6 @@
 name: ray_dart
 description: A library for sending debugging data to the Ray application.
-version: 1.0.0
+version: 0.0.2
 
 environment:
   sdk: ^3.6.0
