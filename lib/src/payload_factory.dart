@@ -5,7 +5,7 @@ import 'package:ray_dart/src/payloads/null_payload.dart';
 import 'package:ray_dart/src/payloads/payload.dart';
 
 class PayloadFactory {
-  late List values;
+  List values = [];
 
   PayloadFactory(this.values);
 
