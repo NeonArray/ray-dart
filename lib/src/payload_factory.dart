@@ -15,10 +15,12 @@ class PayloadFactory {
   }
   List<Payload> createPayloads() {
     return _values.map((value) {
+      return _getPayload(value);
     }).toList();
   }
 
-  Payload getPayload(dynamic value) {
+  @protected
+  Payload _getPayload(dynamic value) {
     if (value == null) {
       return NullPayload();
     }
