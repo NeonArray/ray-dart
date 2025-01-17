@@ -1,3 +1,4 @@
+import 'package:meta/meta.dart';
 import 'package:ray_dart/src/argument_converter.dart';
 import 'package:ray_dart/src/payloads/bool_payload.dart';
 import 'package:ray_dart/src/payloads/log_payload.dart';
