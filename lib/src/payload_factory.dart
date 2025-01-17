@@ -4,8 +4,7 @@ import 'package:ray_dart/src/payloads/log_payload.dart';
 import 'package:ray_dart/src/payloads/null_payload.dart';
 import 'package:ray_dart/src/payloads/payload.dart';
 
-class PayloadFactory {
-  List values = [];
+final class PayloadFactory {
   final List _values;
 
   PayloadFactory(this._values);
