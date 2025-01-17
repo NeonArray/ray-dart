@@ -6,7 +6,6 @@ import 'package:ray_dart/src/payloads/custom_payload.dart';
 import 'package:ray_dart/src/payloads/payload.dart';
 import 'package:ray_dart/src/request.dart';
 import 'package:ray_dart/src/settings/ray_settings.dart';
-import 'package:ray_dart/src/settings/ray_settings_factory.dart';
 import 'package:ray_dart/src/support/rate_limiter.dart';
 import 'package:uuid/uuid.dart';
 
@@ -36,7 +35,7 @@ class Ray {
   }
 
   factory Ray.create(Client? client, String? uuid) => Ray(
-        settings: RaySettingsFactory.createFromConfigFile(),
+        settings: RaySettings.createFromConfigFile(),
         client: client,
         uuid: uuid,
       );

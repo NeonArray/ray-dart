@@ -1,7 +1,7 @@
 library;
 
 import 'package:ray_dart/src/ray.dart';
-import 'package:ray_dart/src/settings/ray_settings_factory.dart';
+import 'package:ray_dart/src/settings/ray_settings.dart';
 
 export 'src/fluent_api.dart';
 
@@ -32,6 +32,6 @@ Ray ray([
     if (arg9 != _key) arg5,
     if (arg10 != _key) arg5,
   ];
-  var settings = RaySettingsFactory.createFromConfigFile();
+  var settings = RaySettings.createFromConfigFile();
   return (Ray(settings: settings))..send(args);
 }
