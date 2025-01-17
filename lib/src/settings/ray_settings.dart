@@ -77,5 +77,34 @@ final class RaySettings {
 
     return RaySettings.cache[configDirectory];
   }
+
+  static String searchConfigFilesOnDisk([String configDirectory = '']) {
+    // TODO: Possibly handle other types such as a dart Map
+    final configNames = [
+      'ray.json',
+    ];
+
+    if (configDirectory == '') {
+      configDirectory = Directory.current.path;
+    }
+
+    while (Directory(configDirectory).existsSync()) {
+      for (var configName in configNames) {
+        final configFullPath =
+            '$configDirectory${Platform.pathSeparator}$configName';
+        if (File(configFullPath).existsSync()) {
+          return configFullPath;
+        }
+      }
+
+      final parentDirectory = Directory(configDirectory).parent.path;
+      if (parentDirectory == configDirectory) {
+        return '';
+      }
+
+      configDirectory = parentDirectory;
+    }
+
+    return '';
   }
 }
