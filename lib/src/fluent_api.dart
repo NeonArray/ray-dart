@@ -248,8 +248,11 @@ extension Url on Ray {
 }
 
 extension Raw on Ray {
+  /// Send raw output of a value to Ray without formatting.
   void raw(List<dynamic> arguments) {
-    if (arguments.isEmpty) {}
+    if (arguments.isEmpty) {
+      return;
+    }
 
     var payloads = arguments.map((arg) {
       return LogPayload.createForArguments(arg);
