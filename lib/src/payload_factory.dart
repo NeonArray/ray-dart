@@ -6,16 +6,17 @@ import 'package:ray_dart/src/payloads/payload.dart';
 
 class PayloadFactory {
   List values = [];
+  final List _values;
 
-  PayloadFactory(this.values);
+  PayloadFactory(this._values);
 
   static List createForValues(List<dynamic> arguments) {
     return PayloadFactory(arguments).getPayloads();
   }
 
   List<Payload> getPayloads() {
-    return values.map((value) {
       return getPayload(value);
+    return _values.map((value) {
     }).toList();
   }
 
