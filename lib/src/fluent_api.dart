@@ -268,6 +268,7 @@ extension Raw on Ray {
 /// be chained without wrapping and awaiting. This could be an issue
 /// depending on the use-case of the consumer. Needs a solution.
 extension Pause on Ray {
+  /// Pause execution.
   Future<void> pause() async {
     var currentTime = DateTime.now().microsecondsSinceEpoch ~/ 1000;
     var timeString = currentTime.toString();
