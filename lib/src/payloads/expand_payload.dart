@@ -4,13 +4,13 @@ import 'package:ray_dart/src/payloads/payload.dart';
 import 'package:ray_dart/src/support/types.dart';
 
 final class ExpandPayload extends Payload {
-  List<String> keys = [];
-  int level = 0;
+  final List<String> keys = [];
+  int _level = 0;
 
   ExpandPayload([List<dynamic> values = const []]) {
     for (var value in values) {
       if (_isNumeric(value)) {
-        level = max(level, value);
+        _level = max(_level, value);
       }
 
       keys.add(value);

@@ -18,7 +18,7 @@ final class DecodedJsonPayload extends Payload {
   PayloadContent getContent() {
     final decodedJson = jsonDecode(value);
     return {
-      'content': ArgumentConverter.convertToPrimitive(decodedJson),
+      'content': convertToPrimitive(decodedJson),
       'label': '',
     };
   }

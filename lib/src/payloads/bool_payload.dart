@@ -2,9 +2,9 @@ import 'package:ray_dart/src/payloads/payload.dart';
 import 'package:ray_dart/src/support/types.dart';
 
 final class BoolPayload extends Payload {
-  bool boolValue;
+  final bool _boolValue;
 
-  BoolPayload(this.boolValue);
+  BoolPayload(this._boolValue);
 
   @override
   String getType() {
@@ -14,7 +14,7 @@ final class BoolPayload extends Payload {
   @override
   PayloadContent getContent() {
     return {
-      'content': boolValue,
+      'content': _boolValue,
       'label': 'Boolean',
     };
   }

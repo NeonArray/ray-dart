@@ -2,9 +2,9 @@ import 'package:ray_dart/src/payloads/payload.dart';
 import 'package:ray_dart/src/support/types.dart';
 
 final class NotifyPayload extends Payload {
-  String text;
+  final String _text;
 
-  NotifyPayload(this.text);
+  NotifyPayload(this._text);
 
   @override
   String getType() {
@@ -14,7 +14,7 @@ final class NotifyPayload extends Payload {
   @override
   PayloadContent getContent() {
     return {
-      'value': text,
+      'value': _text,
     };
   }
 }

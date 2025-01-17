@@ -5,9 +5,9 @@ import 'package:ray_dart/src/payloads/payload.dart';
 import 'package:ray_dart/src/support/types.dart';
 
 final class ImagePayload extends Payload {
-  String location;
+  final String _location;
 
-  ImagePayload(this.location);
+  ImagePayload(this._location);
 
   @override
   String getType() {
@@ -16,20 +16,21 @@ final class ImagePayload extends Payload {
 
   @override
   PayloadContent getContent() {
-    var file = File(location);
+    final file = File(_location);
+    var url = '';
 
     if (file.existsSync()) {
-      location = 'file://$location';
+      url = 'file://$_location';
     }
 
     if (_hasBase64Data()) {
-      location = _getLocationForBase64Data();
+      url = _getLocationForBase64Data();
     }
 
-    location = location.replaceAll('"', '');
+    url = _location.replaceAll('"', '');
 
     return {
-      'content': '<img src="$location" alt="" />',
+      'content': '<img src="$url" alt="" />',
       'label': 'Image',
     };
   }
@@ -39,7 +40,7 @@ final class ImagePayload extends Payload {
   }
 
   bool _hasBase64Data() {
-    var data = _stripDataPrefix(location);
+    final data = _stripDataPrefix(_location);
     try {
       return base64Encode(base64Decode(data)) == data;
     } catch (e) {
@@ -48,6 +49,6 @@ final class ImagePayload extends Payload {
   }
 
   String _getLocationForBase64Data() {
-    return 'data:image/png;base64,${_stripDataPrefix(location)}';
+    return 'data:image/png;base64,${_stripDataPrefix(_location)}';
   }
 }

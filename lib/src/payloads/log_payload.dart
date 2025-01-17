@@ -15,7 +15,7 @@ final class LogPayload extends Payload {
       }
     }
 
-    var data = _getClipboardData(rawValues);
+    final data = _getClipboardData(rawValues);
     meta = [
       {
         'clipboard_data': data.substring(
@@ -42,9 +42,7 @@ final class LogPayload extends Payload {
   }
 
   static Payload createForArguments(List<dynamic> arguments) {
-    var dumpedArgs = arguments.map((arg) {
-      return ArgumentConverter.convertToPrimitive(arg);
-    }).toList();
+    final dumpedArgs = convertValuesToPrimitives(arguments);
 
     return LogPayload(dumpedArgs);
   }

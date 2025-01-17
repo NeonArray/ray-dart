@@ -3,9 +3,9 @@ import 'package:ray_dart/src/payloads/payload.dart';
 import 'package:ray_dart/src/support/types.dart';
 
 final class TablePayload extends Payload {
-  List<dynamic> values;
+  final List<dynamic> _values;
 
-  TablePayload(this.values, [String? label]) {
+  TablePayload(this._values, [String? label]) {
     this.label = label;
   }
 
@@ -16,9 +16,7 @@ final class TablePayload extends Payload {
 
   @override
   PayloadContent getContent() {
-    final vals = values.map((value) {
-      return ArgumentConverter.convertToPrimitive(value);
-    }).toList();
+    final vals = convertValuesToPrimitives(_values);
 
     return {
       'values': vals,

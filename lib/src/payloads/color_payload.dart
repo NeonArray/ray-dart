@@ -1,9 +1,9 @@
 import 'package:ray_dart/src/payloads/payload.dart';
 
 final class ColorPayload extends Payload {
-  String color;
+  final String _color;
 
-  ColorPayload(this.color);
+  ColorPayload(this._color);
 
   @override
   String getType() {
@@ -13,7 +13,7 @@ final class ColorPayload extends Payload {
   @override
   Map<String, dynamic> getContent() {
     return {
-      'color': color,
+      'color': _color,
     };
   }
 }

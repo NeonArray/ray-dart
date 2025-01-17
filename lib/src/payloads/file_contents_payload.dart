@@ -16,7 +16,7 @@ final class FileContentsPayload extends Payload {
 
   @override
   PayloadContent getContent() {
-    var file = File(filePath);
+    final file = File(filePath);
 
     if (!file.existsSync()) {
       return {
@@ -32,7 +32,7 @@ final class FileContentsPayload extends Payload {
   }
 
   String _encodeContent(String content) {
-    String result = HtmlEscape(HtmlEscapeMode.element).convert(content);
+    final result = HtmlEscape(HtmlEscapeMode.element).convert(content);
     return result.replaceAll('\n', '<br />');
   }
 }

@@ -2,9 +2,9 @@ import 'package:ray_dart/src/payloads/payload.dart';
 import 'package:ray_dart/src/support/types.dart';
 
 final class ScreenColorPayload extends Payload {
-  String color;
+  final String _color;
 
-  ScreenColorPayload(this.color);
+  ScreenColorPayload(this._color);
 
   @override
   String getType() {
@@ -13,10 +13,8 @@ final class ScreenColorPayload extends Payload {
 
   @override
   PayloadContent getContent() {
-    assert(color != '', 'Color shouldn\'t be an empty string.');
-
     return {
-      'color': color,
+      'color': _color,
     };
   }
 }
