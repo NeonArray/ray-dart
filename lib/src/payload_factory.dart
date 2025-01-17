@@ -10,9 +10,6 @@ class PayloadFactory {
 
   PayloadFactory(this._values);
 
-  static List createForValues(List<dynamic> arguments) {
-    return PayloadFactory(arguments).getPayloads();
-  }
   List<Payload> createPayloads() {
     return _values.map((value) {
       return _getPayload(value);
