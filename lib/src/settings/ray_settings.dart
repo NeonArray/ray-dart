@@ -68,5 +68,14 @@ final class RaySettings {
       rethrow;
     }
   }
+
+  static String? searchConfigFiles([String configDirectory = '']) {
+    if (!RaySettings.cache.containsKey(configDirectory)) {
+      RaySettings.cache[configDirectory] =
+          searchConfigFilesOnDisk(configDirectory);
+    }
+
+    return RaySettings.cache[configDirectory];
+  }
   }
 }
