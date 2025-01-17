@@ -29,24 +29,28 @@ import 'package:ray_dart/src/ray.dart';
 import 'package:ray_dart/src/support/types.dart';
 
 extension Color on Ray {
+  /// Assign a color to a payload.
   void color(String color) {
     sendRequest(ColorPayload(color));
   }
 }
 
 extension Enable on Ray {
+  /// Enable sending data to Ray.
   void enable() {
     enabled = true;
   }
 }
 
 extension Disable on Ray {
+  /// Disable sending data to Ray.
   void disable() {
     enabled = false;
   }
 }
 
 extension Project on Ray {
+  /// Set the project name.
   void project(String projectName) {
     Ray.projectName = projectName;
   }
@@ -59,7 +63,8 @@ extension ClearScreen on Ray {
 }
 
 extension NewScreen on Ray {
-  void newScreen(String name) {
+  /// Start a new screen.
+  void newScreen([String name = '']) {
     sendRequest(NewScreenPayload(name));
   }
 }
@@ -71,48 +76,56 @@ extension ScreenColor on Ray {
 }
 
 extension ShowApp on Ray {
+  /// Show the app.
   void showApp() {
     sendRequest(ShowAppPayload());
   }
 }
 
 extension HideApp on Ray {
+  /// Hide the app.
   void hideApp() {
     sendRequest(HideAppPayload());
   }
 }
 
 extension Notify on Ray {
+  /// Display a notification.
   void notify(String text) {
     sendRequest(NotifyPayload(text));
   }
 }
 
 extension Remove on Ray {
+  /// Remove an item from Ray.
   void remove() {
     sendRequest(RemovePayload());
   }
 }
 
 extension Separator on Ray {
+  /// Add a visual separator.
   void separator() {
     sendRequest(SeparatorPayload());
   }
 }
 
 extension Size on Ray {
+  /// Display the size of a String.
   void size(String size) {
     sendRequest(SizePayload(size));
   }
 }
 
 extension Table on Ray {
+  /// Format a List with optional label.
   void table(List values, [String label = 'Table']) {
     sendRequest(TablePayload(values, label));
   }
 }
 
 extension Confetti on Ray {
+  /// Shoot confetti in the current screen.
   void confetti() {
     sendRequest(ConfettiPayload());
   }
@@ -125,24 +138,28 @@ extension CreateLock on Ray {
 }
 
 extension File on Ray {
+  /// Display contents of a file.
   void file(String filePath) {
     sendRequest(FileContentsPayload(filePath));
   }
 }
 
 extension Image on Ray {
+  /// Display an image using a path or url.
   void image(String location) {
     sendRequest(ImagePayload(location));
   }
 }
 
 extension Html on Ray {
+  /// Render a piece of HTML.
   void html([String html = '']) {
     sendRequest(HtmlPayload(html));
   }
 }
 
 extension Expand on Ray {
+  /// Send a value to Ray and immediately expand it.
   void expand(List<dynamic> levelOrKey) {
     if (levelOrKey.isEmpty) {
       levelOrKey = [1];
@@ -152,6 +169,7 @@ extension Expand on Ray {
 }
 
 extension ToJson on Ray {
+  /// Display the JSON representation of 1 or more convertable values.
   void toJson(List<dynamic> jsons) {
     final payloads = jsons.map((j) => JsonStringPayload(j)).toList();
     sendRequest(payloads);
@@ -159,6 +177,7 @@ extension ToJson on Ray {
 }
 
 extension Json on Ray {
+  /// Send one or more valid JSON strings to Ray.
   void json(List<String> jsons) {
     final payloads = jsons.map((j) => DecodedJsonPayload(j)).toList();
     sendRequest(payloads);
@@ -172,18 +191,21 @@ extension SendCustom on Ray {
 }
 
 extension Label on Ray {
+  /// Set the label name.
   void label(String label) {
     sendRequest(LabelPayload(label));
   }
 }
 
 extension Text on Ray {
+  /// Display the raw text for a string while preserving whitespace fomatting.
   void text(String text) {
     sendRequest(TextPayload(text));
   }
 }
 
 extension OnlyIf on Ray {
+  /// Conditionally show data based on truthy value or callable.
   void onlyIf<T>(T boolOrCallable, [Function? callback]) {
     bool result = true;
 
@@ -202,6 +224,7 @@ extension OnlyIf on Ray {
 }
 
 extension Url on Ray {
+  /// Display a clickable URL in Ray.
   void url(String url, [String label = '']) {
     if (!url.startsWith('http')) {
       url = 'https://$url';
