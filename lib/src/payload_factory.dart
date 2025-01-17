@@ -13,9 +13,7 @@ class PayloadFactory {
   static List createForValues(List<dynamic> arguments) {
     return PayloadFactory(arguments).getPayloads();
   }
-
-  List<Payload> getPayloads() {
-      return getPayload(value);
+  List<Payload> createPayloads() {
     return _values.map((value) {
     }).toList();
   }
