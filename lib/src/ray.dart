@@ -79,7 +79,7 @@ class Ray {
       payload.localPath = '';
     }
 
-    var request = Request(
+    final request = Request(
       uuid: uuid,
       payloads: finalPayloads,
       meta: [
