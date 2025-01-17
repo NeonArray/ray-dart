@@ -1,4 +1,5 @@
 final class RaySettings {
+  static Map<String, String> cache = {};
   Map<String, dynamic> settings = {};
   bool _loadedUsingSettingsFile = false;
   final Map<String, dynamic> _defaultSettings = {
