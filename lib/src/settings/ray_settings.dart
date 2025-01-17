@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:io';
+
 final class RaySettings {
   static Map<String, String> cache = {};
   Map<String, dynamic> settings = {};
