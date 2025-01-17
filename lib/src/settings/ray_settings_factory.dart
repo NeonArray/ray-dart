@@ -14,9 +14,7 @@ final class RaySettingsFactory {
   static RaySettings createFromConfigFile([String configDirectory = '']) {
     final settingsValues =
         RaySettingsFactory().getSettingsFromConfigFile(configDirectory);
-    var settings = createFromMap(settingsValues);
-
-    return settings;
+    return createFromMap(settingsValues);
   }
 
   Map<String, dynamic> getSettingsFromConfigFile(
