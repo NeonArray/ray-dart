@@ -242,7 +242,7 @@ extension Url on Ray {
       label = url;
     }
 
-    var link = "<a href='$url'>$label</a>";
+    final link = "<a href='$url'>$label</a>";
     html(link);
   }
 }
