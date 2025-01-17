@@ -50,7 +50,7 @@ class Ray {
       return;
     }
 
-    sendRequest(PayloadFactory.createForValues(args));
+    sendRequest(PayloadFactory(args).createPayloads());
   }
 
   void sendRequest(Object payloads) {
