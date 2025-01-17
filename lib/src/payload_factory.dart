@@ -29,7 +29,7 @@ class PayloadFactory {
     }
 
     return LogPayload(
-      ArgumentConverter.convertToPrimitive(value),
+      convertToPrimitive(value),
       value,
     );
   }
