@@ -4,17 +4,16 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:ray_dart/src/exceptions/stop_execution_requested.dart';
+import 'package:ray_dart/src/ray.dart';
 import 'package:ray_dart/src/request.dart';
 
 final class Client {
-  int port;
-  String host;
-  String url;
-  String projectName = '';
   final String _host;
   final String _url;
 
-  Client({this.port = 23517, this.host = 'localhost'}) : url = '$host:$port';
+  Client({int port = 23517, String host = 'localhost'})
+      : _host = host,
+        _url = '$host:$port';
 
   // Do not need futures here because we don't really give a shit if it
   // delivers. Plus it makes the fluent api style not possible afaik
@@ -22,7 +21,7 @@ final class Client {
     try {
       http
           .post(
-            Uri.parse('http://$url'),
+            Uri.parse('http://$_url'),
             headers: {
               'Content-Type': 'application/json; charset=UTF-8',
               'User-Agent': 'Ray 1.0',
@@ -40,7 +39,7 @@ final class Client {
   Future<http.Response> _sendRaw(String uri) async {
     try {
       return await http.get(
-        Uri.parse('http://$url/$uri'),
+        Uri.parse('http://$_url/$uri'),
         headers: {
           'Content-Type': 'application/json; charset=UTF-8',
           'User-Agent': 'Ray 1.0',
