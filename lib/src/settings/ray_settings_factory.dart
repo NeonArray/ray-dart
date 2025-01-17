@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:meta/meta.dart';
 import 'package:ray_dart/src/settings/ray_settings.dart';
 
-class RaySettingsFactory {
+final class RaySettingsFactory {
   static Map<String, dynamic> cache = {};
 
   static RaySettings createFromMap([Map<String, dynamic> settings = const {}]) {
@@ -12,7 +12,7 @@ class RaySettingsFactory {
   }
 
   static RaySettings createFromConfigFile([String configDirectory = '']) {
-    var settingsValues =
+    final settingsValues =
         RaySettingsFactory().getSettingsFromConfigFile(configDirectory);
     var settings = createFromMap(settingsValues);
 
