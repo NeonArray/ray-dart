@@ -56,9 +56,17 @@ extension Project on Ray {
   }
 }
 
-extension ClearScreen on Ray {
-  void clearScreen() {
+extension ClearAll on Ray {
+  /// Clear current and all previous screens.
+  void clearAll() {
     sendRequest(ClearAllPayload());
+  }
+}
+
+extension ClearScreen on Ray {
+  /// Clear current screen.
+  void clearScreen() {
+    newScreen();
   }
 }
 
