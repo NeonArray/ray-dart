@@ -14,7 +14,6 @@ final class RaySettings {
     this.settings = {..._defaultSettings, ...settings};
   }
 
-  RaySettings _setDefaultSettings(Map<String, dynamic> defaults) {
   factory RaySettings.createFromMap(
       [Map<String, dynamic> settings = const {}]) {
     return RaySettings(settings);
@@ -25,16 +24,16 @@ final class RaySettings {
         RaySettings.getSettingsFromConfigFile(configDirectory);
     return RaySettings.createFromMap(settingsValues);
   }
+
+  void setDefaultSettings(Map<String, dynamic> defaults) {
     defaults.forEach((key, value) {
-      if (_wasLoadedUsingConfigFile(key)) {
+      if (wasLoadedUsingConfigFile(key)) {
         settings[key] = value;
       }
     });
-
-    return this;
   }
 
-  bool _wasLoadedUsingConfigFile(String name) {
+  bool wasLoadedUsingConfigFile(String name) {
     if (settings[name] != null) {
       return true;
     }
