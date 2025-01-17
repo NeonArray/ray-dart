@@ -11,11 +11,7 @@ final class Request {
   Request({required this.uuid, required this.payloads, required this.meta});
 
   Map<String, dynamic> toMap() {
-    var payload = payloads.map((payload) {
-      var item = payload.toMap();
-      // item.removeWhere((key, value) => value == null);
-      return item;
-    }).toList();
+    final payload = _payloadsToListOfMaps(payloads);
 
     return {
       'uuid': uuid,
@@ -26,5 +22,11 @@ final class Request {
 
   String toJson() {
     return json.encode(toMap());
+  }
+
+  List<Map<String, dynamic>> _payloadsToListOfMaps(List<Payload> payloads) {
+    return payloads.map((payload) {
+      return payload.toMap();
+    }).toList();
   }
 }
