@@ -30,8 +30,7 @@ final class Client {
             body: request.toJson(),
           )
           .timeout(const Duration(seconds: 2));
-    } on Exception catch (e) {
-      print(e);
+    } on Exception catch (_) {
       rethrow;
     }
   }
@@ -46,8 +45,7 @@ final class Client {
           'Accept-Encoding': '',
         },
       ).timeout(const Duration(seconds: 2));
-    } on Exception catch (e) {
-      print(e);
+    } on Exception catch (_) {
       rethrow;
     }
   }
@@ -70,8 +68,7 @@ final class Client {
       }
 
       return data.active ?? false;
-    } catch (e) {
-      print(e);
+    } catch (_) {
       rethrow;
     }
   }
