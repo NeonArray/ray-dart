@@ -45,9 +45,10 @@ final class RaySettings {
     return false;
   }
 
-  RaySettings _markAsLoadedUsingSettingsFile() {
+  void markAsLoadedUsingSettingsFile() {
     _loadedUsingSettingsFile = true;
-    return this;
+  }
+
   static Map<String, dynamic> getSettingsFromConfigFile(
       [String configDirectory = '']) {
     final configFilePath = RaySettings.searchConfigFiles(configDirectory);
