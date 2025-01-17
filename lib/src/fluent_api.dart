@@ -270,3 +270,10 @@ extension Pause on Ray {
     } while (await client.lockExists(digest.toString()));
   }
 }
+
+extension Hide on Ray {
+  /// Display data in Ray and immediately collapse it.
+  void hide() {
+    sendRequest(HideAppPayload());
+  }
+}
