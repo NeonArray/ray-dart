@@ -43,7 +43,7 @@ final class ImagePayload extends Payload {
     final data = _stripDataPrefix(_location);
     try {
       return base64Encode(base64Decode(data)) == data;
-    } catch (e) {
+    } catch (_) {
       return false;
     }
   }

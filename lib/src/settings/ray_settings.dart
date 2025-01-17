@@ -68,7 +68,7 @@ final class RaySettings {
     try {
       final data = File(configFilePath).readAsStringSync();
       return jsonDecode(data);
-    } catch (e) {
+    } catch (_) {
       rethrow;
     }
   }
