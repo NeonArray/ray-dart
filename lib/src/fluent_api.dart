@@ -277,3 +277,11 @@ extension Hide on Ray {
     sendRequest(HideAppPayload());
   }
 }
+
+extension Pass on Ray {
+  /// Display somethign in Ray and return the value.
+  dynamic pass(dynamic argument) {
+    sendRequest(argument);
+    return argument;
+  }
+}
