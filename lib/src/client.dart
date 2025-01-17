@@ -11,6 +11,8 @@ final class Client {
   String host;
   String url;
   String projectName = '';
+  final String _host;
+  final String _url;
 
   Client({this.port = 23517, this.host = 'localhost'}) : url = '$host:$port';
 
@@ -51,18 +53,21 @@ final class Client {
   }
 
   Future<bool> lockExists(String lockName) async {
-    var queryString = Uri(queryParameters: {
-      'hostname': host,
-      'project_name': projectName,
+    final queryString = Uri(queryParameters: {
+      'hostname': _host,
+      'project_name': Ray.projectName,
     }).query;
 
     try {
-      var url = '/locks/$lockName?$queryString';
-      var response = await _sendRaw(url);
+      final url = '/locks/$lockName?$queryString';
+      final response = await _sendRaw(url);
+
       if (response.statusCode != 200) {
         return false;
       }
-      var data = jsonDecode(response.body);
+
+      final data = jsonDecode(response.body);
+
       if (data.stop_execution ?? false) {
         throw StopExecutionRequested("Pause execution requested in Ray.");
       }
