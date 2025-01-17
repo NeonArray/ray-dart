@@ -37,10 +37,10 @@ void main() {
     {"hi": "there"},
     {"hi": "there"}
   ]);
-  ray().file(
-      '/Users/aarney/StudioProjects/ray-dart/example/ray_dart_example.dart');
+  ray().file('/absolute/path/ray-dart/example/ray_dart_example.dart');
 
-  ray('hi').notify('hello'); // doesnt do anything
+  ray('hi').notify(
+      'hello'); // doesnt do anything (at least on mac even with notifications enabled)
 
   ray().image("/Users/aarney/Desktop/354x354.png");
   ray().image(
