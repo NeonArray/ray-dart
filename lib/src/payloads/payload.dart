@@ -40,9 +40,8 @@ abstract base class Payload {
     List<String> lines = current.toString().split('\n');
 
     if (lines.length > 1) {
-      // find the first item AFTER the internal call to ray
-      int index =
-          lines.indexWhere((line) => RegExp(r'#\d+\s+ray').hasMatch(line));
+      RegExp regExp = RegExp(r'#\d+\s+ray|package:.*/fluent_api\.dart');
+      int index = lines.indexWhere((line) => regExp.hasMatch(line));
 
       if (index != -1) {
         final caller = lines[index + 1];
