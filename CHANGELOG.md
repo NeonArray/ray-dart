@@ -1,3 +1,7 @@
+## 0.0.7
+
+- Allow github action to be executed manually
+
 ## 0.0.6
 
 - Add github action for publishing package to pub.dev
