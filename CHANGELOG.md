@@ -1,3 +1,7 @@
+## 0.0.6
+
+- Add github action for publishing package to pub.dev
+
 ## 0.0.5
 
 - Sync changelog
