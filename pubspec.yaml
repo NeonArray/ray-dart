@@ -1,6 +1,11 @@
 name: ray_dart
 description: A library for sending debugging data to the Ray application.
 version: 0.0.2
+homepage: https://github.com/neonarray/ray-dart
+repository: https://github.com/neonarray/ray-dart
+topics:
+  - debugging
+  - logging
 
 environment:
   sdk: ^3.6.0
