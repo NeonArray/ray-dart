@@ -1,3 +1,7 @@
+## 0.0.5
+
+- Sync changelog
+
 ## 0.0.4
 
 - Housekeeping tasks
